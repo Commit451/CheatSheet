@@ -4,6 +4,8 @@ Quick setup for Long Press tooltips on views, similar to the default ActionBar/T
 [![Build Status](https://travis-ci.org/Commit451/CheatSheet.svg?branch=master)](https://travis-ci.org/Commit451/CheatSheet)
 [![](https://jitpack.io/v/Commit451/CheatSheet.svg)](https://jitpack.io/#Commit451/CheatSheet)
 
+![Image](art/screenshot1.png)
+
 # Usage
 ```java
 CheatSheet.setup(fab, "Favorite");
