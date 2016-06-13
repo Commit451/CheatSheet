@@ -8,7 +8,7 @@ Quick setup for Long Press tooltips on views, similar to the default ActionBar/T
 
 # Usage
 ```java
-CheatSheet.setup(fab, "Favorite");
+CheatSheet.setup(fab, "This is how you favorite");
 ```
 or
 ```java
