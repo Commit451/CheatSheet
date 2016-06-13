@@ -10,6 +10,11 @@ Quick setup for Long Press tooltips on views, similar to the default ActionBar/T
 ```java
 CheatSheet.setup(fab, "Favorite");
 ```
+or
+```java
+CheatSheet.setup(fab, R.string.favorite);
+```
+This will establish a long click listener on the `fab` view, and any time it is long clicked, a `Toast` will appear near the view (similar to what happens when you long press an item in a typical `ActionBar/Toolbar`
 
 License
 --------
