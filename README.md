@@ -16,6 +16,18 @@ CheatSheet.setup(fab, R.string.favorite);
 ```
 This will establish a long click listener on the `fab` view, and any time it is long clicked, a `Toast` will appear near the view (similar to what happens when you long press an item in a typical `ActionBar/Toolbar`
 
+If you want to customize the style of the Toasts that appear, use a factory:
+```java
+CheatSheet.setFactory(new CheatSheet.Factory() {
+    @NonNull
+    @Override
+    public Toast createToast(@NonNull View view, @NonNull CharSequence text) {
+        //do all the custom things you want
+        return Toast.makeText(view.getContext(), text, Toast.LENGTH_LONG)
+            .setView(new CustomView(view.getContext()));
+    }
+});
+```
 License
 --------
 

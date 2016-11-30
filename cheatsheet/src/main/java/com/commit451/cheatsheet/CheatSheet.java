@@ -56,7 +56,7 @@ public final class CheatSheet {
      * Allow custom styling of the Toasts through the {@link Factory}
      * @param factory the factory which will create the styled toasts
      */
-    public static void setToastFactory(@Nullable Factory factory) {
+    public static void setFactory(@Nullable Factory factory) {
         if (factory == null) {
             CheatSheet.factory = defaultFactory;
         } else {
