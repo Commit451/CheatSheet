@@ -16,7 +16,10 @@
 
 package com.commit451.cheatsheet;
 
+import android.annotation.SuppressLint;
 import android.graphics.Rect;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
 import android.text.TextUtils;
 import android.view.Gravity;
@@ -39,15 +42,26 @@ public final class CheatSheet {
      */
     private static final int ESTIMATED_TOAST_HEIGHT_DIPS = 48;
 
-    private static ToastFactory factory;
+    private static Factory defaultFactory = new Factory() {
+        @NonNull
+        @Override
+        public Toast createToast(@NonNull View view, @NonNull CharSequence text) {
+            return Toast.makeText(view.getContext(), text, Toast.LENGTH_SHORT);
+        }
+    };
 
+    private static Factory factory = defaultFactory;
 
     /**
-     * Allow custom styling of the Toasts through the {@link ToastFactory}
+     * Allow custom styling of the Toasts through the {@link Factory}
      * @param factory the factory which will create the styled toasts
      */
-    public static void setToastFactory(ToastFactory factory) {
-        CheatSheet.factory = factory;
+    public static void setToastFactory(@Nullable Factory factory) {
+        if (factory == null) {
+            CheatSheet.factory = defaultFactory;
+        } else {
+            CheatSheet.factory = factory;
+        }
     }
 
     /**
@@ -105,24 +119,21 @@ public final class CheatSheet {
 
     /**
      * Internal helper method to show the cheat sheet toast.
+     * @return true if shown, false if text is empty
      */
+    @SuppressLint("ShowToast")
     private static boolean showCheatSheet(View view, CharSequence text) {
         if (TextUtils.isEmpty(text)) {
             return false;
         }
-        Toast cheatSheet;
-        if (factory != null) {
-            cheatSheet = factory.createToast(text);
-        } else {
-            cheatSheet = Toast.makeText(view.getContext(), text, Toast.LENGTH_SHORT);
-        }
+        Toast cheatSheet = factory.createToast(view, text);
 
         showCheatSheet(view, cheatSheet);
         return true;
     }
 
     /**
-     * Show a cheatsheet on the view specified
+     * Show a cheatsheet (Toast) on the view specified
      * @param view the view
      * @param cheatSheet the toast to show
      */
@@ -139,7 +150,6 @@ public final class CheatSheet {
         final int screenWidth = view.getContext().getResources().getDisplayMetrics().widthPixels;
         final int estimatedToastHeight =
                 (int) (ESTIMATED_TOAST_HEIGHT_DIPS * view.getResources().getDisplayMetrics().density);
-
 
         boolean showBelow = screenPos[1] < estimatedToastHeight;
         if (showBelow) {
@@ -162,12 +172,15 @@ public final class CheatSheet {
     /**
      * Allows configuration of the toasts that will be displayed
      */
-    public interface ToastFactory {
+    public interface Factory {
+
         /**
-         * Generate the toasts to show
+         * Generate the toast which will be shown
+         * @param view the view where the cheatsheet will show
          * @param text the text that will be displayed
          * @return the configured toast
          */
-        Toast createToast(CharSequence text);
+        @NonNull
+        Toast createToast(@NonNull View view, @NonNull CharSequence text);
     }
 }
