@@ -4,6 +4,9 @@ Quick setup for Long Press tooltips on views, similar to the default ActionBar/T
 [![Build Status](https://travis-ci.org/Commit451/CheatSheet.svg?branch=master)](https://travis-ci.org/Commit451/CheatSheet)
 [![](https://jitpack.io/v/Commit451/CheatSheet.svg)](https://jitpack.io/#Commit451/CheatSheet)
 
+# Deprecated
+This is now supported as of API 26, using the [Tooltip API](https://developer.android.com/guide/topics/ui/tooltips) or [TooltipCompat](https://developer.android.com/reference/android/support/v7/widget/TooltipCompat.html)
+
 ![Image](art/screenshot1.png)
 
 # Usage
