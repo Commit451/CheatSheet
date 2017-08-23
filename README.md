@@ -1,11 +1,11 @@
 # CheatSheet
 Quick setup for Long Press tooltips on views, similar to the default ActionBar/Toolbar behavior. Originally contained within [AOSP](https://android.googlesource.com/platform/frameworks/base/+/refs/heads/master/core/java/com/android/internal/view/menu/ActionMenuItemView.java), this version found within [Telecine](https://github.com/JakeWharton/Telecine)
 
+# Deprecated
+This is now supported as of API 26, using the [Tooltip API](https://developer.android.com/guide/topics/ui/tooltips.html) or [TooltipCompat](https://developer.android.com/reference/android/support/v7/widget/TooltipCompat.html)
+
 [![Build Status](https://travis-ci.org/Commit451/CheatSheet.svg?branch=master)](https://travis-ci.org/Commit451/CheatSheet)
 [![](https://jitpack.io/v/Commit451/CheatSheet.svg)](https://jitpack.io/#Commit451/CheatSheet)
-
-# Deprecated
-This is now supported as of API 26, using the [Tooltip API](https://developer.android.com/guide/topics/ui/tooltips) or [TooltipCompat](https://developer.android.com/reference/android/support/v7/widget/TooltipCompat.html)
 
 ![Image](art/screenshot1.png)
 
